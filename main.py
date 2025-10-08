@@ -15,10 +15,13 @@ import json
 load_dotenv()
 
 
-working_dir = os.getcwd()
-config_data = json.load(open(f"{working_dir}/config.json"))
-GROQ_API_KEY = config_data["GROQ_API_KEY"]
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+# working_dir = os.getcwd()
+#config_data = json.load(open(f"{working_dir}/config.json"))
+
+#GROQ_API_KEY = config_data["GROQ_API_KEY"]
+#os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+
+os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 prompt = hub.pull("rlm/rag-prompt")
 llm = ChatGroq(model = "Gemma2-9b-It", temperature=0)
